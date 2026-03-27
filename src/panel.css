@@ -1,0 +1,71 @@
+body {
+	font-family: system-ui, sans-serif;
+	font-size: 13px;
+	line-height: 1.45;
+	margin: 0;
+	padding: 12px;
+	color: var(--joplin-color);
+	background: var(--joplin-background-color);
+}
+
+.title {
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0 0 8px;
+}
+
+.muted {
+	color: var(--joplin-color-faded, #888);
+	margin: 0 0 10px;
+}
+
+.small {
+	font-size: 11px;
+	margin: 12px 0 0;
+}
+
+.done {
+	margin: 0 0 10px;
+	font-weight: 500;
+}
+
+.metrics {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: 1px solid var(--joplin-divider-color, #4443);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.metrics li {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 8px 10px;
+	border-bottom: 1px solid var(--joplin-divider-color, #4443);
+	font-size: 12px;
+}
+
+.metrics li:last-child {
+	border-bottom: none;
+}
+
+.progress {
+	height: 4px;
+	background: var(--joplin-divider-color, #3333);
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.progress-fill {
+	height: 100%;
+	background: var(--joplin-color-info, #6495ed);
+	transition: width 0.2s ease;
+}
+
+.err {
+	color: #c44;
+	margin: 0;
+	word-break: break-word;
+}

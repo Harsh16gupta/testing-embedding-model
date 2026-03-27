@@ -1,0 +1,16 @@
+{
+	"manifest_version": 1,
+	"id": "Jino_testing_transformer_plugin",
+	"app_min_version": "3.5",
+	"version": "1.0.0",
+	"name": "testing-pluign",
+	"description": "testing BGE-small-en-v1.5 in @xenova/transformers",
+	"author": "harsh gupta",
+	"homepage_url": "",
+	"repository_url": "https://github.com/Harsh16gupta/testing-plugin.git",
+	"keywords": [],
+	"categories": [],
+	"screenshots": [],
+	"icons": {},
+	"promo_tile": {}
+}
