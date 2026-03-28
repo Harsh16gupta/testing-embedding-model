@@ -62,10 +62,13 @@ function applyMaxNotes(items: BenchmarkItem[]): BenchmarkItem[] {
 }
 
 function renderLoading(statusText: string, progress: number): string {
+	const coffeeMessage = progress > 0 && progress < 95 ? '<div class="coffee">Grab a coffee, this will take a while...</div>' : '';
+	
 	return `
 		<h1 class="title">BGE-small · Transformers.js</h1>
 		<p class="muted">${statusText}</p>
 		<div class="progress"><div class="progress-fill" style="width: ${progress}%"></div></div>
+		${coffeeMessage}
 	`;
 }
 
@@ -77,7 +80,7 @@ function renderResults(data: {
 	totalMs: number,
 	noteCount: number,
 }): string {
-	const est1000Sec = ((data.avgNoWarmup * 1000) / 1000).toFixed(1);
+	const totalSec = (data.totalMs / 1000).toFixed(1);
 
 	return `
 		<h1 class="title">BGE-small · Transformers.js</h1>
@@ -86,8 +89,7 @@ function renderResults(data: {
 			<li><span>Load</span><span>${(data.initTimeMs / 1000).toFixed(1)} s</span></li>
 			<li><span>Warmup</span><span>${Math.round(data.warmupMs)} ms</span></li>
 			<li><span>Avg (excl. first)</span><span>${data.avgNoWarmup} ms</span></li>
-			<li><span>Total</span><span>${Math.round(data.totalMs)} ms</span></li>
-			<li><span>Est. 1000 × avg</span><span>~${est1000Sec} s</span></li>
+			<li><span>Total embed time</span><span>${totalSec} s (${Math.round(data.totalMs)} ms)</span></li>
 		</ul>
 	`;
 }

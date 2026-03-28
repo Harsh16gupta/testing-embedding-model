@@ -69,3 +69,10 @@ body {
 	margin: 0;
 	word-break: break-word;
 }
+
+.coffee {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
