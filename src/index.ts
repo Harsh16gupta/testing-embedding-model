@@ -68,6 +68,7 @@ function renderLoading(statusText: string, progress: number): string {
 	return `
 		<h1 class="title">${PANEL_TITLE}</h1>
 		<p class="muted">${statusText}</p>
+		<div class="progress"><div class="progress-fill" style="width: ${progress}%"></div></div>
 		${coffeeMessage}
 	`;
 }
@@ -122,12 +123,8 @@ joplin.plugins.register({
 		let warmupMs = 0;
 		const timings: number[] = new Array(benchmarkItems.length).fill(0);
 
-		worker.onerror = async (err) => {
-			logErr('worker:', err);
-			await joplin.views.panels.setHtml(panel, `
-				<h1 class="title">${PANEL_TITLE}</h1>
-				<p class="err">Worker error: ${err.message || String(err)}</p>
-			`);
+		worker.onerror = (err) => {
+			logErr('worker (non-fatal):', err.message || err);
 		};
 
 		worker.onmessage = async (event) => {
@@ -169,6 +166,10 @@ joplin.plugins.register({
 
 					if (next < total) {
 						const progress = 25 + ((i + 1) / total) * 70;
+						await joplin.views.panels.setHtml(panel, renderLoading(
+							`Embedding ${next + 1}/${total}: ${benchmarkItems[next].label}`,
+							progress
+						));
 						worker.postMessage({
 							type: 'embed',
 							text: benchmarkItems[next].text,
