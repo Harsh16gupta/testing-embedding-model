@@ -24,5 +24,20 @@ This creates a `.jpl` file in `publish/` that you can install in Joplin through 
 - `{ "text": "..." }`  used directly
 - `{ "title": "...", "body": "..." }`  combined as title + body (like Joplin notes)
 
+
 I fetched ~1500 Wikipedia articles using the MediaWiki API(https://en.wikipedia.org/w/api.php) for testing.
+
+## The result
+| Description | Screenshot |
+|-------------|-----------|
+| BGE-small 125 notes | <img width="400" alt="Screenshot 2026-03-28 055901" src="https://github.com/user-attachments/assets/62ec6c24-85bb-483e-a21c-aa51c7cba4cf" /> |
+| BGE-small 250 notes | <img width="400" alt="Screenshot 2026-03-28 055313" src="https://github.com/user-attachments/assets/365a38ca-b8aa-4f32-8a1d-269bec537d61" /> |
+| BGE-small 500 notes | <img width="400" alt="Screenshot 2026-03-28 054323" src="https://github.com/user-attachments/assets/aa644f74-5e31-4034-9836-548ef2fa49cd" /> |
+| BGE-small 1000 notes | <img width="400" alt="Screenshot 2026-03-28 053555" src="https://github.com/user-attachments/assets/be256008-b856-406e-9685-5c2196a8bcc6" /> |
+| BGE-small 1500 notes | <img width="400" alt="Screenshot 2026-03-28 062917" src="https://github.com/user-attachments/assets/c8eadeb4-e174-4bcd-bbe1-4b1a9dfd6df8" /> |
+| MiniLM-L6 150 notes | <img width="400" alt="Screenshot 2026-03-28 080610" src="https://github.com/user-attachments/assets/6f18ba5a-8d23-4c83-82c8-36154d3b95f3" /> |
+| MiniLM-L6 500 notes | <img width="400" alt="Screenshot 2026-03-28 084941" src="https://github.com/user-attachments/assets/af345284-65e0-4856-ac96-adf6c2b49444" /> |
+| MiniLM-L6 1000 notes | <img width="400" alt="Screenshot 2026-03-28 083744" src="https://github.com/user-attachments/assets/d93b0622-8d08-4057-ad1d-d06e60d2fba6" /> |
+| MiniLM-L6 1500 notes | <img width="400" alt="Screenshot 2026-03-28 082612" src="https://github.com/user-attachments/assets/f22fe166-f816-4e14-9980-3c55ab4e1376" /> |
+| MiniLM-L6 3000 notes | <img width="400" alt="Screenshot 2026-03-28 091421" src="https://github.com/user-attachments/assets/76ec13a7-f53f-4f37-84d2-66d73f97966d" /> |
 
