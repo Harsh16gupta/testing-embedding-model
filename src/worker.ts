@@ -8,7 +8,7 @@ let embedder: any = null;
 const loadModel = async () => {
 	const t0 = performance.now();
 
-	embedder = await pipeline('feature-extraction', 'Xenova/bge-small-en-v1.5', {
+	embedder = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {
 		dtype: 'q8',
 	});
 
