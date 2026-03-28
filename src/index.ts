@@ -1,4 +1,5 @@
 import joplin from 'api';
+import { PANEL_TITLE } from './modelConfig';
 
 const LOG = '[hg]';
 
@@ -65,7 +66,7 @@ function renderLoading(statusText: string, progress: number): string {
 	const coffeeMessage = progress > 0 && progress < 95 ? '<div class="coffee">Grab a coffee, this will take a while...</div>' : '';
 	
 	return `
-		<h1 class="title">MiniLM-L6 · Transformers.js</h1>
+		<h1 class="title">${PANEL_TITLE}</h1>
 		<p class="muted">${statusText}</p>
 		${coffeeMessage}
 	`;
@@ -82,7 +83,7 @@ function renderResults(data: {
 	const totalSec = (data.totalMs / 1000).toFixed(1);
 
 	return `
-		<h1 class="title">MiniLM-L6 · Transformers.js</h1>
+		<h1 class="title">${PANEL_TITLE}</h1>
 		<ul class="metrics">
 			<li><span>Count</span><span>${data.noteCount}</span></li>
 			<li><span>Load</span><span>${(data.initTimeMs / 1000).toFixed(1)} s</span></li>
@@ -109,7 +110,7 @@ joplin.plugins.register({
 			const msg = e instanceof Error ? e.message : String(e);
 			logErr('corpus:', msg);
 			await joplin.views.panels.setHtml(panel, `
-				<h1 class="title">MiniLM-L6 · Transformers.js</h1>
+				<h1 class="title">${PANEL_TITLE}</h1>
 				<p class="err">${msg}</p>
 			`);
 			return;
@@ -124,7 +125,7 @@ joplin.plugins.register({
 		worker.onerror = async (err) => {
 			logErr('worker:', err);
 			await joplin.views.panels.setHtml(panel, `
-				<h1 class="title">MiniLM-L6 · Transformers.js</h1>
+				<h1 class="title">${PANEL_TITLE}</h1>
 				<p class="err">Worker error: ${err.message || String(err)}</p>
 			`);
 		};
@@ -152,7 +153,7 @@ joplin.plugins.register({
 				} else {
 					logErr('load:', data.error);
 					await joplin.views.panels.setHtml(panel, `
-						<h1 class="title">MiniLM-L6 · Transformers.js</h1>
+						<h1 class="title">${PANEL_TITLE}</h1>
 						<p class="err">Model load failed: ${data.error}</p>
 					`);
 				}
@@ -197,7 +198,7 @@ joplin.plugins.register({
 				} else {
 					logErr('embed:', data.label, data.error);
 					await joplin.views.panels.setHtml(panel, `
-						<h1 class="title">MiniLM-L6 · Transformers.js</h1>
+						<h1 class="title">${PANEL_TITLE}</h1>
 						<p class="err">Embed failed (${data.label}): ${data.error}</p>
 					`);
 				}

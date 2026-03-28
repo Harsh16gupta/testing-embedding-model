@@ -1,5 +1,6 @@
 // @ts-ignore
 import { pipeline, env } from '@huggingface/transformers';
+import { MODEL_ID, MODEL_DTYPE, POOLING } from './modelConfig';
 
 env.backends.onnx.wasm.wasmPaths = './onnx-dist/';
 
@@ -8,14 +9,14 @@ let embedder: any = null;
 const loadModel = async () => {
 	const t0 = performance.now();
 
-	embedder = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {
-		dtype: 'q8',
+	embedder = await pipeline('feature-extraction', MODEL_ID, {
+		dtype: MODEL_DTYPE,
 	});
 
 	const loadTime = performance.now() - t0;
 
 	const tw = performance.now();
-	await embedder('warmup text', { pooling: 'mean', normalize: true });
+	await embedder('warmup text', { pooling: POOLING, normalize: true });
 	const warmupTime = performance.now() - tw;
 
 	return { loadTime, warmupTime };
@@ -25,7 +26,7 @@ const embed = async (text: string) => {
 	if (!embedder) throw new Error('Model not loaded');
 
 	const t0 = performance.now();
-	const output = await embedder(text, { pooling: 'mean', normalize: true });
+	const output = await embedder(text, { pooling: POOLING, normalize: true });
 	const inferenceTime = performance.now() - t0;
 	const dimensions = output.data.length;
 	const embedding = Array.from(output.data as Float32Array);
