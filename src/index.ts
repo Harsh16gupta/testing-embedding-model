@@ -67,7 +67,6 @@ function renderLoading(statusText: string, progress: number): string {
 	return `
 		<h1 class="title">MiniLM-L6 · Transformers.js</h1>
 		<p class="muted">${statusText}</p>
-		<div class="progress"><div class="progress-fill" style="width: ${progress}%"></div></div>
 		${coffeeMessage}
 	`;
 }
@@ -169,10 +168,6 @@ joplin.plugins.register({
 
 					if (next < total) {
 						const progress = 25 + ((i + 1) / total) * 70;
-						await joplin.views.panels.setHtml(panel, renderLoading(
-							`Embedding ${next + 1}/${total}: ${benchmarkItems[next].label}`,
-							progress
-						));
 						worker.postMessage({
 							type: 'embed',
 							text: benchmarkItems[next].text,
