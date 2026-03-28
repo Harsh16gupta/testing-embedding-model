@@ -40,3 +40,14 @@ I fetched ~1500 Wikipedia articles using the MediaWiki API(https://en.wikipedia.
 | MiniLM-L6 1500 notes | <img width="400" alt="Screenshot 2026-03-28 082612" src="https://github.com/user-attachments/assets/f22fe166-f816-4e14-9980-3c55ab4e1376" /> |
 | MiniLM-L6 3000 notes | <img width="400" alt="Screenshot 2026-03-28 091421" src="https://github.com/user-attachments/assets/76ec13a7-f53f-4f37-84d2-66d73f97966d" /> |
 
+Screen recording:
+
+MiniLM-L6
+https://github.com/user-attachments/assets/c69c4e63-1ccf-411a-ac92-88770d3267e2
+
+BGE-small
+https://github.com/user-attachments/assets/c8db40b8-022e-499d-98cb-398aed663e3e
+
+
+
+
