@@ -21,7 +21,6 @@ This creates a `.jpl` file in `publish/` that you can install in Joplin through 
 ## The corpus
 
 `src/corpus.jsonl`: one JSON object per line. Each line can have:
-- `{ "text": "..." }`  used directly
 - `{ "title": "...", "body": "..." }`  combined as title + body (like Joplin notes)
 
 
