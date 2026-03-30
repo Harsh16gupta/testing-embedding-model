@@ -1,13 +1,14 @@
 # Testing Transformers.js in Joplin
 
-A quick Joplin plugin I built to see how well Transformers.js runs inside the plugin sandbox. The idea was to benchmark embedding models on a corpus of notes.
+A quick Joplin plugin I built to see how well Transformers.js runs inside the plugin sandbox. Also tested UMAP and K-Means clustering in the same environment to see if the full pipeline works.
 
 ## What it does
 
 - Loads an embedding model (MiniLM-L6 or BGE-small) using Transformers.js
 - Reads a `corpus.jsonl` file with test notes (I ran a python script to get all the notes from https://en.wikipedia.org/w/api.php)
 - Embeds each note one by one in a Web Worker so Joplin doesn't freeze
-- At the end, displays load time, warmup, average per-note time, and total time
+- After embedding, runs UMAP + K-Means to cluster the notes and picks the best k using silhouette scores
+- Displays everything in a panel: load time, warmup, per-note avg, and the cluster assignments
 
 ## How to build
 
@@ -49,5 +50,12 @@ BGE-small
 https://github.com/user-attachments/assets/c8db40b8-022e-499d-98cb-398aed663e3e
 
 
+## Clustering
+
+After all notes are embedded, the plugin runs:
+1. UMAP (via [DruidJS](https://github.com/saehm/DruidJS)) to reduce the 384-dim vectors down to 5 dimensions
+2. K-Means (via [ml-kmeans](https://github.com/mljs/kmeans)) for k=2 to √N, picks whichever k has the best silhouette score
+
+On 25 notes it takes ~60ms for UMAP and ~10ms for K-Means. The whole clustering part is basically free compared to embedding time.
 
 
