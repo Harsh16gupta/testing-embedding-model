@@ -1,4 +1,4 @@
-# Testing Transformers.js in Joplin
+## Tested Transformers.js in Joplin(Also tested UMAP and K-Means clustering)
 
 A quick Joplin plugin I built to see how well Transformers.js runs inside the plugin sandbox. Also tested UMAP and K-Means clustering in the same environment to see if the full pipeline works.
 
@@ -57,5 +57,12 @@ After all notes are embedded, the plugin runs:
 2. K-Means (via [ml-kmeans](https://github.com/mljs/kmeans)) for k=2 to √N, picks whichever k has the best silhouette score
 
 On 25 notes it takes ~60ms for UMAP and ~10ms for K-Means. The whole clustering part is basically free compared to embedding time.
+
+<img width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/5917e03f-6fe7-466e-9e41-d77b7fcc5e4e" />
+
+Screen Recording:
+https://github.com/user-attachments/assets/ff6e8d4e-ce1c-4fdd-b946-1eea8cac369a
+
+
 
 
