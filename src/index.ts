@@ -307,6 +307,34 @@ joplin.plugins.register({
 							await joplin.views.panels.setHtml(panel,
 								wrap(renderClusterResults(benchmarkData, clusterResult, noteLabels))
 							);
+
+							try {
+								const fs = joplin.require('fs-extra');
+								const outputDir = '/home/harsh-ubuntu/Projects/Joplin_plugin/testing-embedding-model/test_results';
+								await fs.ensureDir(outputDir);
+								
+								const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+								const fileName = `results_${timestamp}.json`;
+								const filePath = outputDir + '/' + fileName;
+								
+								const exportData = {
+									timestamp: new Date().toISOString(),
+									model: PANEL_TITLE,
+									benchmark: benchmarkData,
+									clustering: {
+										bestK: clusterResult.k,
+										silhouetteScore: clusterResult.silhouetteAvg,
+										umapTimeMs: clusterResult.umapTimeMs,
+										kmeansTimeMs: clusterResult.kmeansTimeMs,
+									}
+								};
+								
+								await fs.writeJson(filePath, exportData, { spaces: 2 });
+								logErr('Results saved to', filePath);
+							} catch (exportErr) {
+								logErr('Failed to save export data', exportErr);
+							}
+
 						} catch (e) {
 							const msg = e instanceof Error ? e.message : String(e);
 							logErr('clustering:', msg);
